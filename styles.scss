@@ -1,0 +1,24 @@
+@import '/styles/variables';
+@import '/styles/mixins';
+
+@import '/styles/normalize';
+@import 'styles/font';
+@import 'styles/general';
+
+@import '/styles/blocks/background';
+@import 'styles/blocks/header';
+@import 'styles/blocks/start-screen';
+@import 'styles/blocks/popular';
+@import 'styles/blocks/sellers';
+@import 'styles/blocks/auctions';
+@import 'styles/blocks/contacts';
+@import 'styles/blocks/footer';
+@import 'styles/blocks/mobile-menu';
+
+@import 'styles/cards/category-card';
+@import 'styles/cards/card-seller';
+@import 'styles/cards/auction-card';
+
+@import 'styles/components/button';
+@import 'styles/components/button-details';
+@import 'styles/components/disk';
