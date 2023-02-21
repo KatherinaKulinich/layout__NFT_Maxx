@@ -1,0 +1,153 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+.contacts {
+    @include paddingY(100px);
+    @include column(70px);
+    align-items: center;
+    
+    &__header {
+        @include column(30px);
+        align-items: center;
+        z-index: 30;
+        text-align: center;
+        max-width: 350px;
+    }
+
+    &__title {
+        @include categoryTitleMobile;
+    }
+
+    &__text {
+        @include font($poppins, 400, 14px, 17px);
+    }
+
+    &__form {
+        position: relative;
+        @include size(100%, 60px);
+        max-width: 550px;
+        border-radius: 3px;
+        z-index: 30;
+        backdrop-filter: blur(4px);
+        background-image:  linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%),  linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%);
+        background-size: 100% 1px;
+        background-position: 0 100%, 0 0;
+        background-repeat: no-repeat;
+        background-clip: border-box;
+        z-index: 3;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 21px;
+            border: 1px solid $gradientColor1;
+            border-right: none;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        &::after {
+            border: 1px solid $gradientColor2;
+            border-left: none;
+            left: auto;
+            right: 0;
+            border-radius: 0 3px 3px 0;
+        }
+    }
+
+    &__input {
+        @include size(100%, 100%);
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: none;
+        outline: none;
+        caret-color: $gradientColor1;
+        border-radius: 3px;
+        color: #FFFFFF;
+       
+        &::placeholder {
+            color: #FFFFFF;
+        }
+    }
+
+    &__button {
+        @include size(120px, 50px);
+        position: absolute;
+        right: 5px;
+        @include absoluteCenterY;
+        border-radius: 3px;
+
+        &:hover {
+           @include gradient(90deg, $gradientColor2, $gradientColor1);
+        }
+    }
+
+    &__background {
+        @include bgImage('../../images/bg/abstractBottom.png');
+        @include size(100%, 600px);
+        position: absolute;
+        right: 0;
+        left: 0;
+        animation-name: wave;
+        @include animation(20s);
+    }
+}
+
+
+@media (min-width: map.get($screen, tablet)) {
+    .contacts {
+        &__button {
+            @include size(150px, 50px);
+        }
+    }
+}
+@media (min-width: map.get($screen, laptop)) {
+    .contacts {
+
+        &__header {
+            max-width: 810px;
+        }
+        &__title {
+            @include categoryTitleDesktop;
+        }
+
+        &__text {
+            @include font($poppins, 400, 18px, 27px);
+            text-align: center;
+        }
+    }
+}
+
+
+@keyframes wave {
+    0% {
+        top: 50px;
+    }
+
+    25% {
+        top: 0;
+    }
+
+    50% {
+        top: 50px;
+    }
+
+    75% {
+        top: 0;
+    }
+
+    100% {
+        top: 20px;
+    }
+}

@@ -1,0 +1,159 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+.popular {
+    @include paddingYY(30px, 90px);
+    @include column(40px);
+    align-items: center;
+    width: 100%;
+
+    &__header {
+        @include flexBetween;
+        width: 100%;
+    }
+
+    &__title {
+        @include categoryTitleMobile;
+        max-width: 220px;
+    }
+
+    &__link {
+        @include font($inter, 400, 18px, 24px);
+        @include gradient(90deg, $gradientColor1, $gradientColor2);
+        @include gradientText;
+        position: relative;
+        z-index: 30;
+
+        &::after {
+            content: '';
+            @include size(100%, 2px);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            @include gradient(90deg, $gradientColor1, $gradientColor2);
+        }
+
+        &:hover {
+            @include gradient(90deg, $gradientColor2, $gradientColor1);
+            @include gradientText;
+        }
+        &:hover::after {
+            @include gradient(90deg, $gradientColor2, $gradientColor1);
+        }
+    }
+
+    &__buttons-list {
+        @include flexBetween;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        flex-wrap: wrap;  
+    }
+
+    &__button-item {
+        @include font($poppins, 400, 15px, 21px, #B6B4BC);
+        border-radius: 10px;
+        width: calc(50% - 10px);
+
+        &:last-child {
+            width: 100%;
+        }
+    }
+
+    &__cards-list {
+        @include column(40px);  
+        animation: cards 1.5s linear 0.2s 1;
+    }
+
+    &__card-item {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    &__bg1 {
+        left: 0;
+        @include absoluteCenterY;
+        @include bgBlurCircle(160px);
+    }
+    &__bg2 {
+        right: 0;
+        @include absoluteCenterY;
+        @include bgBlurCircle(160px);
+    }
+}
+
+@media (min-width: map.get($screen, tablet)) {
+    .popular {
+        @include paddingYY(30px, 110px);
+
+        &__title {
+            max-width: none;
+        }
+
+        &__button-item {
+            @include font($poppins, 400, 18px, 21px, #B6B4BC);
+            width: calc(33.33% - 10px);
+
+            &:last-child {
+                width: calc(33.33% - 10px);
+            }
+        }
+    }
+}
+@media (min-width: map.get($screen, laptop)) {
+    .popular {
+        @include paddingYY(540px, 120px);
+
+        &__title {
+            @include categoryTitleDesktop;
+        }
+
+        &__link {
+            @include font($inter, 400, 22px, 31px);
+        }
+    }
+}
+@media (min-width: map.get($screen, desktop-hd)) {
+    .popular {
+        @include paddingYY(50px, 150px);
+
+        &__button-item {
+            width: initial;
+
+            &:last-child {
+                width: initial;
+            }
+        }
+
+        &__cards-list {
+            @include flexBetween;
+            gap: 20px;
+            width: 100%;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        &__card-item {
+            width: calc(33.33% - 10px);
+            max-width: none;
+        } 
+    }
+}
+
+@keyframes cards {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+

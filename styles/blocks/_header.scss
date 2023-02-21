@@ -1,0 +1,110 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+
+.header {
+    @include paddingY(30px);
+    @include flexBetween;
+
+
+    &__navigation {
+        display: none;
+    }
+
+    &__menu-mobile-open {
+        @include size(35px, 35px);
+        @include flexCenter;
+        border-radius: 10px;
+
+        &:active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    &__nav-link {
+        text-decoration: none;
+        @include font($roboto, 400, 18px, 21px);
+        position: relative;
+
+        &--active {
+            color: #FFFFFF;
+        }
+
+        &::after {
+            content: '';
+            height: 2px;
+            left: 0;
+            width: 1px;
+            position: absolute;
+            transition: width 0.5s ease, background-color 1s ease;;
+            right: 0;
+            margin: 0 auto;
+            bottom: 25px;
+        }
+
+        &:hover {
+            transition: color 1s ease;
+            color: #FFFFFF;
+        }
+
+        &:not(.header__nav-link--active):hover:after {
+            width: 100%;
+            @include gradient(90deg, $gradientColor1, $gradientColor2);
+        }
+    }
+
+    &__button {
+        display: none;
+    }
+}
+
+@media (min-width: map.get($screen, tablet)) {
+    .header {
+         @include paddingY(50px);
+
+        &__navigation {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: static;
+            flex-direction: row;
+        }
+
+        &__menu-mobile-open {
+            display: none;
+        }
+
+        &__button {
+            display: block;
+            @include font($roboto, 500, 18px, 21px, #FFFFFF);
+            border-radius: 25px;
+            position: relative;
+            z-index: 30;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                @include size(100%, 100%);
+                border-radius: 25px;
+                @include gradient(90deg, $gradientColor1, $gradientColor2);
+                color: #FFFFFF;
+                z-index: -1;
+                filter: blur(0px);
+                transition: 0.5s ease;
+            }
+
+            &:hover::after {
+                filter: blur(15px);
+            }
+        }
+    }
+}

@@ -1,0 +1,128 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+.auctions {
+    @include paddingYY(80px, 60px);
+    @include column(60px);
+    align-items: center;
+
+
+    &__header {
+        width: 100%;
+        @include flexBetween;
+    }
+
+    &__title {
+        @include categoryTitleMobile;
+    }
+
+    &__cards-list {
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    &__card-item {
+        width: 100%;
+        max-width: 370px;
+    }
+
+    &__link {
+        @include font($inter, 400, 18px, 21px);
+        @include gradient(90deg, $gradientColor1, $gradientColor2);
+        @include gradientText;
+        position: relative;
+        
+        &::after {
+            content: '';
+            @include size(100%, 2px);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            @include gradient(90deg, $gradientColor1, $gradientColor2);
+        }
+        
+        &:hover {
+            @include gradient(90deg, $gradientColor2, $gradientColor1);
+            @include gradientText;
+        }
+        &:hover::after {
+            @include gradient(90deg, $gradientColor2, $gradientColor1);
+        }
+    }
+
+    &__bg-blur:nth-last-child(1) {
+        display: block;
+        left: 300px;
+        bottom: -100px;
+        @include bgBlurCircle(250px);
+    }
+    &__bg-blur:nth-last-child(2) {
+        display: block;
+        right: 0px;
+        bottom: 100px;
+        @include absoluteCenterY;
+        @include bgBlurCircle(200px);
+    }
+    &__bg-blur:nth-last-child(3) {
+        display: block;
+        top: 200px;
+        left: 0;
+        @include bgBlurCircle(200px);
+    }
+}
+
+
+@media (min-width: map.get($screen, tablet)) {
+    .auctions {
+        @include paddingYY(100px, 70px);
+
+        &__cards-list {
+            flex-direction: row;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        &__card-item {
+            width: calc(50% - 20px);
+        }
+    }
+}
+@media (min-width: map.get($screen, laptop)) {
+    .auctions {
+        @include paddingYY(120px, 80px);
+
+        &__title {
+            @include categoryTitleDesktop;
+        }
+
+        &__link {
+            @include font($inter, 400, 22px, 31px);
+        }
+    }
+}
+@media (min-width: map.get($screen, desktop-sd)) {
+    .auctions {
+        @include paddingYY(150px, 100px);
+
+        &__cards-list {
+            gap: 20px;
+        }
+
+        &__card-item {
+            width: calc(25% - 20px);
+            max-width: none;
+        }
+    }
+}

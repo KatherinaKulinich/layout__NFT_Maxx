@@ -1,0 +1,132 @@
+@use '../variables';
+@use '../mixins';
+
+.auction-card {
+    perspective:1500px;
+    position: relative;
+
+    &:hover .auction-card__side--front{
+        transform: rotateY(-180deg);
+    }
+    &:hover .auction-card__side--back{
+        transform: rotateY(0);
+    }
+
+    &__main {
+        @include column(30px);
+        background-color: $bgColor;
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+    &__side {
+        position:absolute;
+        @include flexCenter; 
+        top: 0;
+        left: 0;
+        @include size(100%, 100%);
+        transition:all .5s ease;
+        backface-visibility: hidden;
+
+        
+        &--front{
+            background-color: $bgColor;
+            position: relative;
+            border-radius: 10px;
+            @include size(100%, 100%);
+
+            &::before {
+                content: "";
+                @include gradientBorder(10px, 100.5%, -0.25%);
+            } 
+        }
+
+        &--back {
+            padding: 30px;
+            border-radius: 10px;
+            transform: rotateY(180deg);
+            background-color: #161326;
+            border: 1px solid $gradientColor2;
+            @include column(30px);
+            align-items: center;
+        }  
+    }
+
+    &__description {
+        @include font($poppins, 400, 15px, 21px, #FFFFFF);
+        text-align: center;
+    }
+
+
+    &__avatar {
+        width: 100%;
+        position: relative;
+    }
+
+    &__image {
+        width: 100%;
+        border-radius: 45px;
+    }
+
+    &__likes-field {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 3px 10px;
+
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        border-radius: 15px;
+        background-color: rgba($color: #FFFFFF, $alpha: .1);
+        box-shadow:0px 0px 5px 0px #ffffff ,0px 0px 5px 0px #ffffff ;
+    }
+
+    &__likes-text {
+        @include font($roboto, 400, 14px, 21px, #FFFFFF);
+    }
+
+    &__title {
+        @include font($inter, 400, 22px, 30px, #FFFFFF);
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 20px;
+        row-gap: 4px;
+    }
+
+    &__profile {
+        border-radius: 16px;
+        grid-column: 1/2;
+        grid-row: 1/3;
+        align-self: center;
+    }
+
+    &__profile-name {
+        @include font($roboto, 400, 12px, 21px, #FFFFFF);
+        grid-column: 2/3;
+        grid-row: 1/2;
+        align-self: flex-end;
+    }
+
+    &__point {
+        @include font($poppins, 400, 16px, 24px, #898698);
+        grid-column: 2/3;
+        grid-row: 2/3;
+        align-self: flex-start;
+    }
+
+    &__button {
+        border-radius: 15px;
+        color: #FFFFFF;
+        grid-column: 3/4;
+        grid-row: 1/3;
+        align-self: center;
+        position: relative;
+    }
+}

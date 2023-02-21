@@ -1,0 +1,35 @@
+@use '../variables';
+@use '../mixins'; 
+
+.button {
+    padding: 10px 25px;
+    border: none;
+
+    &--transparent {
+		background-color: $bgColor;
+        position: relative;
+
+		&::before {
+			content: '';
+			@include size(102%, 104%);
+            border-radius: 10px;
+            @include gradient(120deg, $gradientColor1, $gradientColor2 );
+            position: absolute;
+            z-index: -1;
+            top: -2%;
+            left: -1%;
+		}
+
+        &:not(.button--active):hover {
+            transition-property: box-shadow;
+            transition-duration: 0.3s;
+            box-shadow: 1px 2px 10px 0px $gradientColor1, -1px -2px 7px 0px $gradientColor2;
+        }
+    }
+
+    &--fill, 
+    &--active {
+        background: linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%);
+        color: #FFFFFF;
+    }
+}

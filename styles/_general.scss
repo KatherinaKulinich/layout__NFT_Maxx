@@ -1,0 +1,92 @@
+@use './variables';
+@use './mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+p,
+h1,
+h2,
+h3, 
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.body {
+    background-color: $bgColor;
+    
+
+    &__header, 
+    &__popular,
+    &__main,
+    &__start-screen,
+    &__auctions {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__main,
+    &__start-screen {
+        height: 100vh;
+    }
+
+    &__blur {
+        background: transparent;
+        backdrop-filter: blur(10px);
+        width: 100%;
+        z-index: 20;
+        position: relative;
+    }
+
+    &__sellers {
+        background-color: #231B59;
+        position: relative;
+    }
+
+    &__contact {
+        background-color: #161326;
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+
+
+.wrapper {
+    @include marginX(15px);
+}
+
+@media (min-width: map.get($screen, tablet)) {
+    .wrapper {
+       @include marginX(60px);
+    }
+}
+@media (min-width: map.get($screen, laptop)) {
+    .wrapper {
+        @include marginX(90px);
+    }
+}
+@media (min-width: map.get($screen, desktop-hd)) {
+    .wrapper {
+        @include marginX(120px);
+    }
+}
+@media (min-width: map.get($screen, desktop-sd)) {
+    .wrapper {
+        @include marginAuto;
+        width: 1300px;
+    }
+}

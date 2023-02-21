@@ -1,0 +1,110 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+.sellers {
+    width: 100%;
+    @include paddingY(60px);
+    @include column(60px);
+    align-items: center;
+    overflow: hidden;
+
+    &__title {
+        @include categoryTitleMobile;
+    }
+
+    &__list {
+        z-index: 30;
+        width: 100%;
+        display: flex;
+        align-self: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+
+        &:hover .card-seller:not(:hover) {
+            filter: blur(5px);
+        }
+    }
+
+    &__item {
+        width: 98%;
+        max-width: 430px;
+    }
+
+    &__bg-blur {
+        position: absolute;
+        @include size(200px, 200px);
+        @include absoluteCenterY;
+        border-radius: 50%;
+        background: $gradientColor1;
+        z-index: 10;
+        filter: blur(130px);
+
+        &:nth-last-child(4) {
+            left: 0px;
+        }
+    
+        &:nth-last-child(3) {
+            right: 0px;  
+        }
+    }
+
+    &__abstr {
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 20;
+
+        &:nth-last-child(2) {
+            background-image: url('../../images/bg/abstract1.png');
+            @include size(100%, 600px);
+            max-width: 600px;
+            bottom: 0;
+            left: 0;
+        }
+    
+        &:nth-last-child(1) {
+            background-image: url('../../images/bg/abstarct2.png');
+            @include size(200px, 600px);
+            top: 0;
+            right: 0;
+        }
+    }
+}
+
+
+@media (min-width: map.get($screen, laptop)) {
+    .sellers {
+        &__title {
+            @include categoryTitleDesktop;
+        }
+
+        &__list {
+            justify-content: center;
+        }
+
+        &__item {
+            width: calc(50% - 15px);
+        }
+    }
+}
+
+@media (min-width: map.get($screen, desktop-sd)) {
+    .sellers {
+        @include paddingYY(100px, 120px);
+
+        &__item {
+            width: calc(33.33% - 15px);
+        }
+
+        &__abstr:nth-last-child(1) {
+            bottom: 0;
+            top: initial;
+        }
+    }
+}

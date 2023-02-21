@@ -3,3 +3,22 @@
 
 @import './normalize';
 @import './font';
+@import './general';
+
+@import './blocks/background';
+@import './blocks/header';
+@import './blocks/start-screen';
+@import './blocks/popular';
+@import './blocks/sellers';
+@import './blocks/auctions';
+@import './blocks/contacts';
+@import './blocks/footer';
+@import './blocks/mobile-menu';
+
+@import './cards/category-card';
+@import './cards/card-seller';
+@import './cards/auction-card';
+
+@import './components/button';
+@import './components/button-details';
+@import './components/disk';

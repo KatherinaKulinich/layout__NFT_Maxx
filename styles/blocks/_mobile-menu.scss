@@ -1,0 +1,83 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color: #2b2631, $alpha: 0.8);
+    z-index: 50;
+
+    &__popup {
+        padding: 40px 20px;
+        position: absolute;
+        top: 220px;
+        right: 0;
+        bottom: -100px;
+        left: 0;
+        background-color: #FFFFFF;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+
+    &__header {
+        @include flexBetween;
+        padding-bottom: 30px;
+        border-bottom: 3px solid $gradientColor2;
+    }
+
+    &__close {
+        @include size(35px, 35px);
+        @include flexCenter;
+        border-radius: 10px;
+
+        &:active {
+            background-color: rgba($color: #742626, $alpha: 0.2);
+        }
+    }
+
+    &__button {
+        border-radius: 25px;
+        @include font($roboto, 500, 14px, 17px, #FFFFFF);
+
+        &:hover {
+            @include gradient(150deg, $gradientColor1, $gradientColor2);
+        }
+    }
+
+    &__navigation {
+        padding-top: 50px;
+        @include column(30px);
+    }
+
+    &__nav-link {
+        text-decoration: none;
+        @include font($roboto, 400, 18px, 21px);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #c0bfc1;
+
+        &:hover {
+            color: $gradientColor1;
+        }
+
+        &--active {
+            color: $gradientColor2;
+            font-weight: 700;
+        }
+    }
+}
+
+@media (min-width: map.get($screen, tablet)) {
+    .mobile-menu {
+        display: none;
+    }
+}

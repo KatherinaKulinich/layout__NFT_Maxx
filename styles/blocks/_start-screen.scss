@@ -1,0 +1,239 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+.start-screen {
+    height: 100%;
+    position: relative;
+    
+    &__content {
+        @include column(30px);
+        align-items: center;
+        text-align: center;
+        position: relative;
+        z-index: 30;
+    }
+
+    &__showing {
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+        grid-template-rows: auto;
+        justify-self: unset;
+        column-gap: 20px;
+    }
+
+    &__subtitle {
+        @include font($roboto, 400, 16px, 21px);
+    }
+
+    &__title-block {
+        width: 100%;
+        max-width: 400px;
+        z-index: 30;
+    }
+
+    &__title-block span:not(.start-screen__title-text:last-child) {
+        margin-right: 10px;
+    }
+
+    &__title-text {
+        @include font($inter, 700, 44px, 52px, #FFFFFF);
+        
+        &--simple {
+            color: #FFFFFF;
+        }
+
+        &--insert1 {
+            @include bgImage('../images/span1.jpg');
+            @include size(60px, 21px);
+            display: inline-block;
+            border-radius: 40px;
+        }
+        &--insert2 {
+            @include bgImage('../images/span2.jpg');
+            @include size(50px, 19px);
+            display: inline-block;
+            border-radius: 40px;
+        }
+
+        &--stroke {
+            color: transparent;
+            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-color: #F800FF;
+        }
+
+        &--gradient {
+            @include gradient(270deg, $gradientColor1, $gradientColor2);
+            @include gradientText;
+        }
+    }
+
+
+    &__indicators-list {
+        position: relative;
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+
+    &__indicator-item {
+        @include column(5px);
+        position: absolute;
+    }
+
+    &__indicator-item:nth-child(1) {
+        top: 20px;
+        left: 0;
+    }
+    &__indicator-item:nth-child(2) {
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &__indicator-item:nth-child(3) {
+        top: 140px;
+        right: 0;
+    }
+
+    &__indicator-amount {
+        @include font($inter, 700, 24px, 27px, #FFFFFF);
+        display: flex;
+
+        &::after {
+            content: '+';
+            height: 20px;
+            color: $gradientColor2;
+        }
+    }
+
+    &__indicator-text {
+        @include font($poppins, 400, 12px, 17px);
+    }
+
+}
+
+
+@media (min-width: map.get($screen, tablet)) {
+    .start-screen {
+
+        &__content {
+            gap: 60px;
+        }
+
+        &__showing {
+            display: grid;
+            grid-template-columns: 1fr 3.5fr;
+            grid-template-rows: auto;
+            column-gap: 30px;
+        }
+       
+        &__subtitle {
+            @include font($roboto, 400, 19px, 24px);
+        }
+
+        &__title-block {
+            max-width: 600px;
+        }
+
+        &__title-block span:not(.start-screen__title-text:last-child) {
+            margin-right: 20px;
+        }
+
+        &__title-text {
+            @include font($inter, 700, 50px, 58px);
+
+            &--simple {
+                color: #FFFFFF;
+            }
+            
+            &--insert1 {
+                @include size(130px, 46px);
+            }
+            &--insert2 {
+                @include size(110px, 40px);
+            }
+
+            &--stroke {
+                color: transparent;
+            }
+        }
+
+        &__indicator-amount {
+            @include font($inter, 700, 34px, 37px, #FFFFFF);
+
+            &::after {
+                content: '+';
+                height: 34px;
+            }
+        }
+        &__indicator-text {
+            @include font($poppins, 400, 15px, 17px);
+        }
+    }
+}
+
+@media (min-width: map.get($screen, laptop)) {
+    .start-screen {
+
+        &__showing {
+            grid-template-columns: 1fr 2.5fr;
+            column-gap: 80px;
+        }
+    }
+}
+
+@media (min-width: map.get($screen, desktop-hd)) {
+    .start-screen {
+
+        &__content {
+            gap: 30px;
+        }
+
+        &__subtitle {
+            @include font($roboto, 400, 22px, 35px);
+        }
+
+        &__title-block {
+            max-width: 1120px;
+        }
+
+        &__title-block span:not(.start-screen__title-text:last-child) {
+            margin-right: 30px;
+        }
+
+        &__title-text {
+            @include font($inter, 700, 90px, 98px);
+
+            &--simple {
+                color: #FFFFFF;
+            }
+            
+            &--insert1 {
+                @include size(230px, 61px);
+            }
+            &--insert2 {
+                @include size(190px, 61px);
+            }
+            &--stroke {
+                color: transparent;
+            }
+        }
+
+        &__indicator-amount {
+            @include font($inter, 700, 44px, 57px, #FFFFFF);
+
+            &::after {
+                content: '+';
+                height: 44px;
+            }
+        }
+        &__indicator-text {
+            @include font($poppins, 400, 18px, 27px);
+        }
+    }
+}

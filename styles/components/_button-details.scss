@@ -1,0 +1,72 @@
+@use '../variables';
+@use '../mixins';
+
+.button-details {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    background: transparent;
+    width: 200px;
+    height: auto;
+
+    &__circle {
+        transition: all 0.5s cubic-bezier(0.65, 0, 0.076, 1);
+        position: relative;
+        display: block;
+        margin: 0;
+        @include size(50px, 50px);
+        border-radius: 25px;
+        @include gradient(90deg, $gradientColor1, $gradientColor2);
+    }
+
+    &__arrow-icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: #FFFFFF;
+        transition: all 0.5s  cubic-bezier(0.65, 0, 0.076, 1);
+        left: 10px;
+        @include size(20px, 3px);
+        background: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 0px;
+            @include size(15px, 15px);
+            border-top: 3px solid #FFFFFF;
+            border-right: 3px solid #FFFFFF;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__text {
+        transition: all 0.5s  cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        inset: 0;
+        padding: 15px 0;
+        margin: 0 0 0 20px;
+        @include font($roboto, 500, 15px, 18px, #FFFFFF);
+        @include gradient(90deg, $gradientColor1, $gradientColor2);
+        @include gradientText; 
+    }
+
+    &:hover .button-details__circle {
+        width: 100%;
+    }
+
+    &:hover .button-details__arrow-icon {
+        background: #FFFFFF;
+        transform: translate(15px, 0);
+    }
+    &:hover .button-details__text {
+        color: #FFFFFF;
+        background: transparent;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial; 
+    }
+}

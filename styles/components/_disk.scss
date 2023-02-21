@@ -1,0 +1,127 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+.disk {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: block;
+    z-index: 30;
+    position: relative;
+    @include size(100px, 100px);
+    border-radius: 50%;
+    @include gradient(40deg, $gradientColor1, $gradientColor2);
+
+    &__text-box .disk__text {
+        @include bgImage('../../images/text.svg');
+        @include size(75px, 36px);
+        position: absolute;
+    }
+
+    &__text-box .disk__text:nth-child(1) {
+        top: 12px;
+        @include absoluteCenterX;
+    }
+
+    &__text-box .disk__text:nth-child(2) {
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg) ;
+    }
+
+    &__text-box .disk__separator {
+        @include bgImage('../../images/separatorDisk.svg');
+        @include size(4px, 4px);
+        position: absolute;
+        @include absoluteCenterY;
+    }
+
+    &__text-box .disk__separator:nth-child(3) {
+        left: 14px;
+    }
+
+    &__text-box .disk__separator:nth-child(4) {
+        right: 14px;
+    }
+
+    &__text-box {
+        position: relative;
+        @include size(100%, 100%);
+        animation-name: circle;
+    }
+
+    &__arrow-dot {
+        @include size(7px, 7px);
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        position: absolute;
+        @include absoluteCenter;
+    }
+
+    &__arrow {
+        position: absolute;
+        @include bgImage('../../images/arrow.svg');
+        @include size(20px, 20px);
+        bottom: 0;
+    }
+}
+
+@media (min-width: map.get($screen, laptop)) {
+    .disk {
+        @include size(200px, 200px);
+
+        &__text-box .disk__text {
+            @include size(150px, 77px);
+        }
+
+        &__text-box {
+            @include animation(20s);
+            animation-delay: 1s;
+        }
+
+        &__arrow-dot {
+            @include size(15px, 15px);
+        }
+
+        &__arrow {
+            @include size(40px, 40px);
+        }
+
+        &__text-box .disk__separator {
+            @include size(7px, 7px);
+        }
+
+        &__text-box .disk__separator:nth-child(3) {
+            left: 25px;
+        }
+
+        &__text-box .disk__separator:nth-child(4) {
+            right: 25px;
+        }
+    }
+}
+
+
+@keyframes circle {
+    0% {
+        transform: rotate(90deg);
+    }
+
+    33% {
+        transform: rotate(180deg);
+    }
+
+    67% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform:  rotate(360deg);
+    }
+}

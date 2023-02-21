@@ -1,0 +1,116 @@
+@use './variables';
+
+@mixin font($font, $fw, $fs, $lh, $color: $secondaryTextColor) {
+    font-family: $font;
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    color: $color;
+}
+
+@mixin paddingY($pad) {
+    padding-top: $pad;
+    padding-bottom: $pad;
+}
+@mixin paddingYY($padTop, $padBottom) {
+    padding-top: $padTop;
+    padding-bottom: $padBottom;
+}
+
+@mixin bgImage($url) {
+    background-image: url($url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin categoryTitleDesktop {
+    @include font($inter, 700, 44px, 57px, #FFFFFF);
+}
+@mixin categoryTitleMobile {
+    @include font($inter, 700, 24px, 31px, #FFFFFF);
+}
+
+@mixin column($gap) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin flexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin gradientBorder($radius, $size: 101%, $coord: -0.5% ) {
+    @include size($size, $size);
+    border-radius: $radius;
+    @include gradient(90deg, $gradientColor1, $gradientColor2 );
+    position: absolute;
+    z-index: -1;
+    top: $coord;
+    left: $coord;
+}
+
+@mixin gradient($deg, $color1, $color2) {
+    background-image:  linear-gradient($deg,  $color1, #3c67e3 63%, $color2);
+}
+
+@mixin animation($time) {
+    animation-duration: $time;
+    animation-timing-function:linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin absoluteCenter {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absoluteCenterX {
+    left: 50%;
+    transform: translateX(-50%);
+}
+@mixin absoluteCenterY {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin marginX($marg) {
+    margin-right: $marg;
+    margin-left: $marg;
+}
+
+@mixin marginAuto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@mixin bgBlurCircle($size) {
+    @include size($size, $size);
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    background: $gradientColor1;
+    z-index: 10;
+    filter: blur(170px);
+}
+
+@mixin gradientText {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

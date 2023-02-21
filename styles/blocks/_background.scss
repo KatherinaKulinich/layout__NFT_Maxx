@@ -1,0 +1,171 @@
+@use '../variables';
+@use '../mixins';
+@use "sass:map";
+
+$screen: ("tablet": 768px,
+          "laptop": 1024px,
+          "desktop-hd": 1240px,
+          "desktop-sd": 1440px);
+
+
+.background {
+
+    &__circleBg {
+        @include bgBlurCircle(200px);
+        top: 300px;
+        left: 150px;
+    }
+}
+
+
+
+@media (min-width: map.get($screen, tablet)) {
+    .background {
+        &__abstract {
+            background-image: url('../../images/bg.png');
+            background-repeat: no-repeat;
+            @include size(690px, 650px);
+            position: absolute;
+            z-index: 20;
+            right: -100px;
+            bottom: 130px;
+        }
+    }
+}
+@media (min-width: map.get($screen, desktop-hd)) {
+    .background {
+
+        &__star {
+            @include size(80px, 80px);
+            position: absolute;
+            animation-name: rotate;
+            @include animation(9s);
+
+            &:nth-child(1) {
+                @include bgImage('../../images/bg/bgStar1.svg');
+                left: 50px;
+            }
+    
+            &:nth-child(2) {
+                @include bgImage('../../images/bg/bgStar2.svg');
+                top: 30px;
+                left: 200px;
+            }
+            &:nth-child(3) {
+                @include bgImage('../../images/bg/bgStar3.svg');
+                bottom: 200px;
+                left: 700px;
+            }
+            &:nth-child(4) {
+                @include bgImage('../../images/bg/bgStar4.svg');
+                top: 10px;
+                right: 270px;
+            }
+        }
+
+        &__circle {
+            position: absolute;
+            border-radius: 50%;
+
+            &:nth-child(5) {
+                @include size(33px, 33px);
+                background: $bgColor;
+                top: 300px;
+                left: 300px;
+                
+                &::before {
+                    content: '';
+                    @include gradientBorder(50%, 104%, -2%);
+                }
+            }
+    
+            &:nth-child(6) {
+                @include size(40px, 40px);
+                background: linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%);
+                top: 150px;
+                right: 100px;
+                animation-name: rotate;
+                @include animation(9s);
+                animation-delay: 2s;
+            }
+    
+            &:nth-child(7) {
+                @include size(20px, 20px);
+                background: linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%);
+                bottom: 400px;
+                right: 350px;
+                animation-name: rotate;
+                @include animation(9s);
+                animation-delay: 2s;
+            }
+            
+            &:nth-child(8) {
+                @include size(24px, 24px);
+                background-color: $bgColor;
+                top: 10px;
+                left: 350px;
+                
+                &::before {
+                    content: '';
+                    @include gradientBorder(50%, 106%, 3%);
+                }
+            }
+    
+            &:nth-child(9) {
+                @include size(34px, 34px);
+                background-color: $bgColor;
+                bottom: 350px;
+                right: 150px;
+                
+                &::before {
+                    content: '';
+                    @include gradientBorder(50%, 104%, -2%);
+                }
+            }
+    
+            &:nth-child(10) {
+                @include size(44px, 44px);
+                background-color: $bgColor;
+                top: 10px;
+                right: 100px;
+    
+                &::before {
+                    content: '';
+                    @include gradientBorder(50%, 106%, 2%);
+                }
+            }  
+        }
+        
+        
+    }  
+}
+
+
+@keyframes rotate {
+
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: blur(1px);
+    }
+
+    25% {
+        transform: rotate(90deg) scale(0.8);
+        filter: blur(0px);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(0.6);
+        filter: blur(3px);
+    }
+
+    75% {
+        transform: rotate(270deg) scale(0.8);
+        filter: blur(0px);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+        filter: blur(1px);
+    }
+
+}
