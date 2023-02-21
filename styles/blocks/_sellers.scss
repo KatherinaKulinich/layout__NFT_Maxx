@@ -61,7 +61,7 @@ $screen: ("tablet": 768px,
         z-index: 20;
 
         &:nth-last-child(2) {
-            background-image: url('../../images/bg/abstract1.png');
+            background-image: url('../../images/abstract1.png');
             @include size(100%, 600px);
             max-width: 600px;
             bottom: 0;
@@ -69,7 +69,7 @@ $screen: ("tablet": 768px,
         }
     
         &:nth-last-child(1) {
-            background-image: url('../../images/bg/abstarct2.png');
+            background-image: url('../../images/abstarct2.png');
             @include size(200px, 600px);
             top: 0;
             right: 0;

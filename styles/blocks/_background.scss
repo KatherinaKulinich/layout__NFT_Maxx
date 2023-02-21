@@ -36,28 +36,28 @@ $screen: ("tablet": 768px,
     .background {
 
         &__star {
-            @include size(80px, 80px);
+            @include size(30px, 30px);
             position: absolute;
             animation-name: rotate;
             @include animation(9s);
 
             &:nth-child(1) {
-                @include bgImage('../../images/bg/bgStar1.svg');
+                @include bgImage('../../images/bgStar1.png');
                 left: 50px;
             }
     
             &:nth-child(2) {
-                @include bgImage('../../images/bg/bgStar2.svg');
+                @include bgImage('../../images/bgStar2.png');
                 top: 30px;
                 left: 200px;
             }
             &:nth-child(3) {
-                @include bgImage('../../images/bg/bgStar3.svg');
+                @include bgImage('../../images/bgStar3.png');
                 bottom: 200px;
                 left: 700px;
             }
             &:nth-child(4) {
-                @include bgImage('../../images/bg/bgStar4.svg');
+                @include bgImage('../../images/bgStar4.png');
                 top: 10px;
                 right: 270px;
             }

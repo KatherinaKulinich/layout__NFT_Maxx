@@ -19,7 +19,7 @@ $screen: ("tablet": 768px,
     @include gradient(40deg, $gradientColor1, $gradientColor2);
 
     &__text-box .disk__text {
-        @include bgImage('../../images/text.svg');
+        @include bgImage('../../images/text.png');
         @include size(75px, 36px);
         position: absolute;
     }
@@ -36,7 +36,7 @@ $screen: ("tablet": 768px,
     }
 
     &__text-box .disk__separator {
-        @include bgImage('../../images/separatorDisk.svg');
+        @include bgImage('../../images/separatorDisk.png');
         @include size(4px, 4px);
         position: absolute;
         @include absoluteCenterY;
@@ -65,10 +65,15 @@ $screen: ("tablet": 768px,
     }
 
     &__arrow {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__arrow svg {
         position: absolute;
-        @include bgImage('../../images/arrow.svg');
         @include size(20px, 20px);
-        bottom: 0;
+        bottom: 0px;
+        left: 0;
     }
 }
 
@@ -89,7 +94,7 @@ $screen: ("tablet": 768px,
             @include size(15px, 15px);
         }
 
-        &__arrow {
+        &__arrow svg {
             @include size(40px, 40px);
         }
 

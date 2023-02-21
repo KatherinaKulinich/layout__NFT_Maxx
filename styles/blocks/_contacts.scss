@@ -94,7 +94,7 @@ $screen: ("tablet": 768px,
     }
 
     &__background {
-        @include bgImage('../../images/bg/abstractBottom.png');
+        @include bgImage('../../images/abstractBottom.png');
         @include size(100%, 600px);
         position: absolute;
         right: 0;
