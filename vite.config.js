@@ -2,5 +2,5 @@ import { defineConfig } from 'vite'
 
 
 export default defineConfig({
-    base: '/vite-deploy-demo/'
+    base: '/layout__NFT_Maxx/'
 })
