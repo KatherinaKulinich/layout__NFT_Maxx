@@ -50,13 +50,15 @@ $screen: ("tablet": 768px,
         }
 
         &--insert1 {
-            @include bgImage('../../images/span1.jpg');
+            background-image: url('../../images/span1.jpg');
+            background-position: center;
             @include size(60px, 21px);
             display: inline-block;
             border-radius: 40px;
         }
         &--insert2 {
-            @include bgImage('../../images/span2.jpg');
+            background-image: url('../../images/span2.jpg');
+            background-position: center;
             @include size(50px, 19px);
             display: inline-block;
             border-radius: 40px;

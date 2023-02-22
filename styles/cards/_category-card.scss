@@ -101,11 +101,10 @@ $screen: ("tablet": 768px,
         bottom: 8px;
     }
 
-    &__check-icon {
-        position: relative;
+    &__check-icon svg {
+        position: absolute;
         @include absoluteCenter;
-        @include size(7px, 5px);
-        @include bgImage('../../images/done.svg');
+        @include size(9px, 6px);
     }
 
     &__name {
