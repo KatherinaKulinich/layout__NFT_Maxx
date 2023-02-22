@@ -18,28 +18,42 @@ $screen: ("tablet": 768px,
     border-radius: 50%;
     @include gradient(40deg, $gradientColor1, $gradientColor2);
 
+    &__text-box {
+        @include size(100%, 100%);;
+        position: relative;
+    }
+
     &__text-box .disk__text {
-        @include bgImage('../../images/text.png');
+        @include size(100%, 100%);
+        position: absolute;
+    }
+
+    &__text-box .disk__text svg {
         @include size(75px, 36px);
         position: absolute;
     }
 
-    &__text-box .disk__text:nth-child(1) {
-        top: 12px;
+    &__text-box .disk__text svg:nth-child(1) {
+        top: 10px;
         @include absoluteCenterX;
+        left: 50%;
+       
     }
 
     &__text-box .disk__text:nth-child(2) {
-        bottom: 12px;
+        bottom: 0;
         left: 50%;
         transform: translateX(-50%) rotate(180deg) ;
     }
 
     &__text-box .disk__separator {
-        @include bgImage('../../images/separatorDisk.png');
-        @include size(4px, 4px);
+        @include size(6px, 6px);
         position: absolute;
         @include absoluteCenterY;
+    }
+
+    &__text-box .disk__separator svg {
+        @include size(6px, 6px);
     }
 
     &__text-box .disk__separator:nth-child(3) {
@@ -81,8 +95,12 @@ $screen: ("tablet": 768px,
     .disk {
         @include size(200px, 200px);
 
-        &__text-box .disk__text {
+        &__text-box .disk__text svg {
             @include size(150px, 77px);
+        }
+
+        &__text-box .disk__text svg:nth-child(1) {
+            top: 20px;
         }
 
         &__text-box {
@@ -99,18 +117,21 @@ $screen: ("tablet": 768px,
         }
 
         &__text-box .disk__separator {
-            @include size(7px, 7px);
+            @include size(10px, 10px);
         }
 
         &__text-box .disk__separator:nth-child(3) {
-            left: 25px;
+            left: 30px;
         }
 
         &__text-box .disk__separator:nth-child(4) {
-            right: 25px;
+            right: 30px;
         }
     }
 }
+
+
+
 
 
 @keyframes circle {

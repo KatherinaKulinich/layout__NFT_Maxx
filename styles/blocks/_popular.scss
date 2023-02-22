@@ -77,16 +77,18 @@ $screen: ("tablet": 768px,
         max-width: 500px;
     }
 
-    &__bg1 {
-        left: 0;
+    &__bg-blur {
         @include absoluteCenterY;
         @include bgBlurCircle(160px);
+
+        &:nth-last-child(2) {
+            left: 0;
+        }
+        &:nth-last-child(1) {
+            right: 0;
+        }
     }
-    &__bg2 {
-        right: 0;
-        @include absoluteCenterY;
-        @include bgBlurCircle(160px);
-    }
+
 }
 
 @media (min-width: map.get($screen, tablet)) {

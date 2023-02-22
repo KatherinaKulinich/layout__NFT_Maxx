@@ -12,8 +12,39 @@ $screen: ("tablet": 768px,
 
     &__circleBg {
         @include bgBlurCircle(200px);
-        top: 300px;
-        left: 150px;
+        @include absoluteCenterY;
+        left: 50px;
+        z-index: 20;
+    }
+
+    &__star svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    &__star {
+        position: absolute;
+
+        &:nth-child(1) {
+            left: 10px;
+            top: 10px;
+        }
+
+        &:nth-child(2) {
+            top: 30px;
+            left: 200px;
+        }
+        &:nth-child(3) {
+            bottom: 350px;
+            right: 50px;
+        }
+        &:nth-child(4) {
+            left: 150px;
+            bottom: 140px;
+        }
+        &:nth-child(5) {
+            bottom: 180px;
+        }
     }
 }
 
@@ -21,6 +52,12 @@ $screen: ("tablet": 768px,
 
 @media (min-width: map.get($screen, tablet)) {
     .background {
+
+        &__star svg {
+            width: initial;
+            height: initial;
+        }
+
         &__abstract {
             background-image: url('../../images/bg.png');
             background-repeat: no-repeat;
@@ -30,44 +67,49 @@ $screen: ("tablet": 768px,
             right: -100px;
             bottom: 130px;
         }
+
+        &__star {
+
+            &:nth-child(1) {
+                left: 50px;
+                top: initial;
+            }
+    
+            &:nth-child(2) {
+                top: 30px;
+                left: 200px;
+            }
+            &:nth-child(3) {
+                bottom: 200px;
+                left: 700px;
+                right: initial;
+            }
+            &:nth-child(4) {
+                top: 10px;
+                right: 270px;
+                left: initial;
+                bottom: initial;
+            }
+            &:nth-child(5) {
+                bottom: 500px;
+                left: 100px;
+            }
+        }
     }
 }
 @media (min-width: map.get($screen, desktop-hd)) {
     .background {
 
         &__star {
-            @include size(30px, 30px);
-            position: absolute;
             animation-name: rotate;
             @include animation(9s);
-
-            &:nth-child(1) {
-                @include bgImage('../../images/bgStar1.png');
-                left: 50px;
-            }
-    
-            &:nth-child(2) {
-                @include bgImage('../../images/bgStar2.png');
-                top: 30px;
-                left: 200px;
-            }
-            &:nth-child(3) {
-                @include bgImage('../../images/bgStar3.png');
-                bottom: 200px;
-                left: 700px;
-            }
-            &:nth-child(4) {
-                @include bgImage('../../images/bgStar4.png');
-                top: 10px;
-                right: 270px;
-            }
         }
 
         &__circle {
             position: absolute;
             border-radius: 50%;
 
-            &:nth-child(5) {
+            &:nth-child(6) {
                 @include size(33px, 33px);
                 background: $bgColor;
                 top: 300px;
@@ -79,7 +121,7 @@ $screen: ("tablet": 768px,
                 }
             }
     
-            &:nth-child(6) {
+            &:nth-child(7) {
                 @include size(40px, 40px);
                 background: linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%);
                 top: 150px;
@@ -89,7 +131,7 @@ $screen: ("tablet": 768px,
                 animation-delay: 2s;
             }
     
-            &:nth-child(7) {
+            &:nth-child(8) {
                 @include size(20px, 20px);
                 background: linear-gradient(90deg, $gradientColor1 0%, $gradientColor2 80%);
                 bottom: 400px;
@@ -99,7 +141,7 @@ $screen: ("tablet": 768px,
                 animation-delay: 2s;
             }
             
-            &:nth-child(8) {
+            &:nth-child(9) {
                 @include size(24px, 24px);
                 background-color: $bgColor;
                 top: 10px;
@@ -111,7 +153,7 @@ $screen: ("tablet": 768px,
                 }
             }
     
-            &:nth-child(9) {
+            &:nth-child(10) {
                 @include size(34px, 34px);
                 background-color: $bgColor;
                 bottom: 350px;
@@ -123,7 +165,7 @@ $screen: ("tablet": 768px,
                 }
             }
     
-            &:nth-child(10) {
+            &:nth-child(11) {
                 @include size(44px, 44px);
                 background-color: $bgColor;
                 top: 10px;

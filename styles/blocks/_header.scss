@@ -12,6 +12,7 @@ $screen: ("tablet": 768px,
 .header {
     @include paddingY(30px);
     @include flexBetween;
+    z-index: 10;
 
 
     &__navigation {
